@@ -1,10 +1,12 @@
+scalaVersion in ThisBuild := "2.12.10"
+
 name := "DataTranform"
 
 version := "0.1"
 
-scalaVersion := "2.11.12"
+scalaVersion := "2.12.10"
 
-val SparkVersion = "2.3.1"
+val SparkVersion = "2.4.2"
 
 
 // or if using sbt version < 0.13
@@ -23,9 +25,9 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % SparkVersion %"provided",
   "org.apache.spark" %%"spark-sql" % SparkVersion %"provided"
 )
-libraryDependencies += "org.apache.spark" % "spark-streaming_2.11" % "2.1.0"% "provided"
-libraryDependencies += "io.snappydata" % "snappy-spark-mllib_2.11" % "2.1.1.7"% "provided"
-libraryDependencies += "org.apache.spark" % "spark-mllib_2.11" % "2.2.0"
+//libraryDependencies += "org.apache.spark" % "spark-streaming_2.11" % "2.1.0"% "provided"
+//libraryDependencies += "io.snappydata" % "snappy-spark-mllib_2.11" % "2.1.1.7"% "provided"
+//libraryDependencies += "org.apache.spark" % "spark-mllib_2.11" % "2.2.0"
 libraryDependencies += "com.ibm.db2" % "jcc" % "11.5.0.0"
 libraryDependencies += "com.ibm.stocator" % "stocator" % "1.0.35"
 
@@ -36,8 +38,8 @@ libraryDependencies += "com.ibm.stocator" % "stocator" % "1.0.35"
 
 
 //scala test
-libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.8"
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % "test"
+//libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.8"
+//libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % "test"
 //resolvers += "Artima Maven Repository" at "http://repo.artima.com/releases"
 //addSbtPlugin("com.artima.supersafe" % "sbtplugin" % "1.1.3")
 //resolvers += "jitpack" at "https://jitpack.io"
@@ -60,4 +62,13 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % "test"
 resolvers += "Spark Packages Repo" at "http://dl.bintray.com/spark-packages/maven"
 
 // Scala 2.11
-libraryDependencies += "MrPowers" % "spark-fast-tests" % "0.17.1-s_2.11"
+libraryDependencies += "MrPowers" % "spark-fast-tests" % "0.17.1-s_2.12"
+// https://mvnrepository.com/artifact/com.eed3si9n/sbt-assembly
+libraryDependencies += "com.eed3si9n" %% "sbt-assembly" % "sbt0.10.0_0.3"
+
+//assemblyJarName in assembly := "utils.jar"
+//mainClass in assembly := Some("trans.Transformator.scala")
+//resolvers += Resolver.url("bintray-sbt-plugins", url("https://dl.bintray.com/eed3si9n/sbt-plugins/"))(Resolver.ivyStylePatterns)
+//
+//addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
+enablePlugins(AssemblyPlugin)
